@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.empty-list {
+  text-align: center;
+  font-size: 1.2em;
+  color: #999;
+  td {
+    padding: 2rem;
+  }
+}
