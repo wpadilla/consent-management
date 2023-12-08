@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["@babel/preset-typescript", { jsxPragma: "h" }],
+    ["@babel/preset-env", { "modules": false }]
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-react-jsx", {
+      "runtime": "automatic",
+      "importSource": "preact"
+    }]
+  ]
+}
