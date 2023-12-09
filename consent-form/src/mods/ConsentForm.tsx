@@ -86,11 +86,11 @@ const ConsentForm = () => {
 
 
     const next = () => {
-        if (!isDisabledNext && currentStep !== lastStep) {
-            step.value++
-        }
         if (currentStep === lastStep && !isDisabledNext) {
             userDataCompleted.value = true;
+        }
+        if (!isDisabledNext && currentStep !== lastStep) {
+            step.value+=1;
         }
     };
 
@@ -104,21 +104,21 @@ const ConsentForm = () => {
     const incompleteUserData = () => userDataCompleted.value = false;
 
     const editUserName = () => {
-        incompleteUserData();
         step.value = 1;
+        incompleteUserData();
     }
 
     const sendNextIcon = useMemo(() => (
         <SendOutlined onClick={next} color={isDisabledNext ? 'disabled' : 'info'}/>
-    ), [isDisabledNext]);
+    ), [isDisabledNext, currentStep]);
 
     const editNameIcon = useMemo(() => (
         <EditOutlined onClick={editUserName} color={'info'}/>
-    ), [isDisabledNext]);
+    ), [isDisabledNext, currentStep]);
 
     const editEmailIcon = useMemo(() => (
         <EditOutlined onClick={incompleteUserData} color={'info'}/>
-    ), [isDisabledNext]);
+    ), [isDisabledNext, currentStep]);
 
     const loadConsents = async () => {
         consents.value = await consentService.get();
